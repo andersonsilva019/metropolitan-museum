@@ -1,10 +1,10 @@
-function App() {
+import { globalStyles } from './styles/globalStyles'
+import { Home } from './pages/Home'
 
-  return (
-    <div>
-      Hello World
-    </div>  
-  )
+globalStyles()
+
+function App() {
+  return <Home />
 }
 
 export default App
