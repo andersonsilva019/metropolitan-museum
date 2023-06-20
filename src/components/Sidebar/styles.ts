@@ -4,7 +4,7 @@ export const Container = styled('aside', {
   position: 'fixed',
   zIndex: 0,
   bottom: 0,
-  top: '7.5rem',
+  top: '6rem',
   gridArea: 'sidebar',
   backgroundColor: '$white',
   width: '100%',
@@ -30,31 +30,35 @@ export const ListWrapper = styled('ul', {
   listStyle: 'none',
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'flex-start',
+  paddingRight: '1.5rem',
 })
 
 export const Item = styled('li', {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  borderRadius: '10px',
+  gap: '0.5rem',
+  width: '100%',
   fontSize: '$14',
   fontWeight: '400',
+  padding: '0.5rem 1rem',
   color: '$black300',
 
-  '> button': {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-    border: 0,
-    background: 'transparent',
-    cursor: 'pointer',
-    padding: '0.5rem 1rem',
-    borderRadius: '10px',
+  transition: 'background 0.2s',
+  cursor: 'pointer',
 
-    transition: 'background 0.2s',
+  '&:hover': {
+    backgroundColor: '$primary',
+    color: '$secondary',
+  },
 
-    '&:hover': {
-      backgroundColor: '$primary',
-      color: '$secondary',
+  variants: {
+    isSelected: {
+      true: {
+        backgroundColor: '$primary',
+        color: '$secondary',
+      }
     }
   }
 })
