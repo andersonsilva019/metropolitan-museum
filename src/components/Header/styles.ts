@@ -11,5 +11,11 @@ export const Container = styled('header', {
   justifyContent: 'center',
   backgroundColor: '$white',
   height: '4rem',
-  padding: '0 2rem',
+  padding: '1rem 2rem',
+  gap: '2rem',
+})
+
+export const MyFavoritesButton = styled('button', {
+  all: 'unset',
+  cursor: 'pointer',
 })
