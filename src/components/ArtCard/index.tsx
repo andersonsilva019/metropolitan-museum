@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { CloseIcon, FavoriteIcon } from '../../assets/icons'
+import { CloseIcon, FavoriteIcon, UnFavoriteIcon } from '../../assets/icons'
 import { Modal } from '../Modal'
+import defaultImage from '../../assets/images/default-image.svg'
 import {
   Container,
   WrapperImage,
@@ -12,8 +13,33 @@ import {
   ContentModal,
   Group
 } from './styles'
+import { useFavorites } from '../../hooks/useFavorites'
 
-export function ArtCard() {
+export type ArtCardProps = {
+  id: number;
+  name: string;
+  img: string;
+  artistName: string;
+  artistBeginDate: string
+  artistEndDate: string
+  dimensions: string;
+  isPublicDomain: boolean;
+  accessionNumber: string;
+}
+
+export function ArtCard({
+  id,
+  name,
+  img,
+  artistBeginDate,
+  artistEndDate,
+  artistName,
+  isPublicDomain,
+  dimensions,
+  accessionNumber,
+}: ArtCardProps) {
+
+  const { addFavorite, removeFavorite, isInFavorites } = useFavorites()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -28,41 +54,57 @@ export function ArtCard() {
   return (
     <>
       <Container>
-        <Badge>Domínio público</Badge>
+        {isPublicDomain && <Badge>Public Domain</Badge>}
         <WrapperImage>
-          <img src="https://picsum.photos/200/300" alt="Imagem de teste" />
+          <img src={img || defaultImage} alt={name} />
         </WrapperImage>
         <HeaderCard>
-          <strong>Angels and demons</strong>
-          <button>
-            <FavoriteIcon color='#0D75FF' size={36} />
+          <strong>{name}</strong>
+          <button onClick={!isInFavorites(id) ? () => addFavorite({
+            id,
+            name,
+            img,
+            artistBeginDate,
+            artistEndDate,
+            artistName,
+            isPublicDomain,
+            dimensions,
+            accessionNumber
+          }) : () => removeFavorite(id)}>
+            {isInFavorites(id) ? (
+              <FavoriteIcon color='#0D75FF' size={36} />
+            ): (
+              <UnFavoriteIcon color='#0D75FF' size={36} />
+            )}
           </button>
         </HeaderCard>
-        <AuthorName>Leonardo da Vinci - 1978</AuthorName>
+        <AuthorName>
+          {artistName || 'Unknown'} | {artistBeginDate || '0000'} - {artistEndDate || '0000'} 
+        </AuthorName>
         <MoreDetailsButton onClick={openModal}>
           More details
         </MoreDetailsButton>
       </Container>
       <Modal isOpen={isOpen} openModal={openModal} closeModal={closeModal}>
         <HeaderModal>
-          <h2>Angels and demons</h2>
+          <h2>{name}</h2>
           <button onClick={closeModal}>
-            <CloseIcon color='#58667E' size={18}/>
+            <CloseIcon color='#58667E' size={18} />
           </button>
         </HeaderModal>
         <ContentModal>
-          <img src="https://picsum.photos/200/300" alt="Imagem de teste" />
+          <img src={img || defaultImage} alt={name} />
           <Group>
-            <span>Autor: </span>
-            <strong>Leonardo (1990 - 9212)</strong>
+            <span>Artist: </span>
+            <strong>{artistName || 'Unknown'} ({artistBeginDate || '0000'} - {artistEndDate || '0000'}) </strong>
           </Group>
           <Group>
-            <span>Dimensões: </span>
-            <strong>200x400</strong>
+            <span>Dimensions: </span>
+            <strong>{dimensions}</strong>
           </Group>
           <Group>
-            <span>Identificação: </span>
-            <strong>234234.--42342</strong>
+            <span>Identifier: </span>
+            <strong>{accessionNumber}</strong>
           </Group>
         </ContentModal>
       </Modal>

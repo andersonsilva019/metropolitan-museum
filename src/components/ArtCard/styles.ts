@@ -34,6 +34,9 @@ export const HeaderCard = styled('div', {
   '> strong': {
     color: '$black',
     fontWeight: '500',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
   },
 
   '> button': {
@@ -93,6 +96,7 @@ export const HeaderModal = styled('div', {
   justifyContent: 'space-between',
   backgroundColor: '$primary',
   padding: '1.5rem 2rem',
+  gap: '1rem',
 
   h2: {
     color: '$black300',
