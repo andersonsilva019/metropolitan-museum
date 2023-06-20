@@ -49,6 +49,7 @@ export const Container = styled('div', {
   maxWidth: '30rem',
   height: '100vh',
   backgroundColor: '$white',
+  overflowY: 'auto',
 
   variants: {
     isOpen: {
