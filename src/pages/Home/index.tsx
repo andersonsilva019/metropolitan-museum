@@ -4,6 +4,7 @@ import { DefaultLayout } from '../../components/Layout/Default'
 import { DepartmentContext } from '../../context/Department'
 import { SearchContext } from '../../context/Search'
 import { useGetObjectByDepartment, useGetObjects, useSearchObject } from '../../services/MuseumApiService'
+import { Content } from './styles'
 
 export function HomePage() {
 
@@ -24,13 +25,15 @@ export function HomePage() {
 
   return (
     <DefaultLayout>
-      {!query && artsListByDepartment?.length !== 0 && <ArtList data={artsListByDepartment || []} />}
-      {!query && !artsListByDepartment && <ArtList data={artsList || []} />}
-      {query && (artListBySearch || []).length > 0 ? <ArtList data={artListBySearch || []} /> : !artsList?.length && !artsListByDepartment?.length && (
-        <div style={{ width: '400px' }}>
-          <h2>Ups!... no results found</h2>
-        </div>
-      )}
+      <Content>
+        {!query && artsListByDepartment?.length !== 0 && <ArtList data={artsListByDepartment || []} />}
+        {!query && !artsListByDepartment && <ArtList data={artsList || []} />}
+        {query && (artListBySearch || []).length > 0 ? <ArtList data={artListBySearch || []} /> : !artsList?.length && !artsListByDepartment?.length && (
+          <div style={{ width: '400px' }}>
+            <h2>Ups!... no results found</h2>
+          </div>
+        )}
+      </Content>
     </DefaultLayout>
   )
 }

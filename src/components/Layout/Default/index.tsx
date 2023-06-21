@@ -1,6 +1,6 @@
 import { Header } from '../../Header';
 import { Sidebar } from '../../Sidebar';
-import { Container,Content } from './styles'
+import { Container, WrapperContent } from './styles'
 
 type DefaultLayoutProps = {
   children: React.ReactNode;
@@ -11,9 +11,9 @@ export function DefaultLayout({ children }: DefaultLayoutProps) {
     <Container>
       <Header />
       <Sidebar />
-      <Content>
+      <WrapperContent>
         {children}
-      </Content>
+      </WrapperContent>
     </Container>
   )
 }

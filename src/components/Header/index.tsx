@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { filterSelectOption } from "../Filter/selectOptions";
 import { SearchInput } from "./SearchInput";
 
-import { Container, MyFavoritesButton } from './styles'
 import Select, { SingleValue } from 'react-select'
 import { SearchContext } from "../../context/Search";
+import { Container, MyFavoritesButton, Content, Box } from './styles'
 
 interface SelectValue {
   value: string;
@@ -55,29 +55,32 @@ export function Header() {
 
   return (
     <Container>
-      <Select
-        options={filterSelectOption}
-        value={selected}
-        isSearchable={false}
-        isClearable
-        placeholder="Filter by"
-        onChange={handleChange}
-        styles={{
-          control: (baseStyle, state) => ({
-            ...baseStyle,
-            width: 250,
-          })
-        }}
-      />
-      <SearchInput
-        onSearch={onSearch}
-        value={query}
-        handleSearch={handleSearch}
-      />
-
-      <MyFavoritesButton onClick={() => navigate('/favorites')}>
-        My Favorites
-      </MyFavoritesButton>
+      <Content>
+        <Box>
+          <Select
+            options={filterSelectOption}
+            value={selected}
+            isSearchable={false}
+            isClearable
+            placeholder="Filter by"
+            onChange={handleChange}
+            styles={{
+              control: (baseStyle, state) => ({
+                ...baseStyle,
+                width: 250,
+              })
+            }}
+          />
+          <SearchInput
+            onSearch={onSearch}
+            value={query}
+            handleSearch={handleSearch}
+          />
+        </Box>
+        <MyFavoritesButton onClick={() => navigate('/favorites')}>
+          My Favorites
+        </MyFavoritesButton>
+      </Content>
     </Container>
   )
 }

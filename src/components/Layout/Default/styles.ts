@@ -9,16 +9,29 @@ export const Container = styled('main', {
     'sidebar content'
   `,
   height: '100%',
+  width: '100%',
+
+  '@media (max-width: 1040px)': {
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: '1fr 1fr 1fr',
+    gap: '1.5rem',
+
+    gridTemplateAreas: `
+    'header'
+    'sidebar'
+    'content'
+  `,
+  }
 })
 
-
-export const Content = styled('div', {
-  display: 'grid',
-  gridAreas: 'content',
-  padding: '8rem 8rem 2rem 16rem',
+export const WrapperContent = styled('div', {
+  gridArea: 'content',
+  padding: '2rem',
   width: '100%',
-  marginLeft: '10rem',
   height: '100%',
-  gridTemplateColumns: '1fr 1fr 1fr',
-  gap: '2rem',
+  margin: '2.5rem 1.5rem',
+
+  '@media (max-width: 1200px)': {
+    marginTop: 0,
+  }
 })

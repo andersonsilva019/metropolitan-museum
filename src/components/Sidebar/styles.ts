@@ -24,6 +24,19 @@ export const Container = styled('aside', {
   },
 
   overflowY: 'auto',
+  
+  '@media (max-width: 1040px)': {
+    position: 'unset',
+    height: '5.5rem',
+    margin: '8rem auto 1rem',
+    maxWidth: '100%',
+    overflowX: 'auto',
+    overflowY: 'hidden',
+
+    '> h2': {
+      display: 'none',
+    }
+  }
 })
 
 export const ListWrapper = styled('ul', {
@@ -32,6 +45,10 @@ export const ListWrapper = styled('ul', {
   flexDirection: 'column',
   alignItems: 'flex-start',
   paddingRight: '1.5rem',
+
+  '@media (max-width: 1040px)': {
+    flexDirection: 'row',
+  }
 })
 
 export const Item = styled('li', {
@@ -51,6 +68,10 @@ export const Item = styled('li', {
   '&:hover': {
     backgroundColor: '$primary',
     color: '$secondary',
+  },
+
+  '@media (max-width: 1040px)': {
+    width: '12rem',
   },
 
   variants: {

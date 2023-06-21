@@ -1,12 +1,10 @@
-import { styled } from "../../styles";
+import { styled } from '../../styles'
 
-export const Container = styled('div', {
-  display: 'grid',
-  gridAreas: 'content',
-  padding: '8rem 8rem 2rem 16rem',
+export const Content = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+
   width: '100%',
-  marginLeft: '10rem',
-  height: '100%',
-  gridTemplateColumns: '1fr 1fr 1fr',
-  gap: '2rem',
+  maxWidth: '1120px',
+  margin: '0 6rem',
 })
