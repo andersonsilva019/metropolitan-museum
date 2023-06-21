@@ -65,7 +65,7 @@ export function Header() {
             placeholder="Filter by"
             onChange={handleChange}
             styles={{
-              control: (baseStyle, state) => ({
+              control: (baseStyle) => ({
                 ...baseStyle,
                 width: 250,
               })
