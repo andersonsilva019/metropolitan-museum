@@ -1,14 +1,23 @@
+import { Suspense } from 'react'
 import { RouteObject } from "react-router-dom";
-import { FavoritesPage } from "../pages/Favorites";
-import { HomePage } from "../pages/Home";
+import { HomePage, FavoritesPage } from './Root';
+import { Skeleton } from '../pages/Home/components/Skeleton';
 
 export const routes: RouteObject[] = [
   {
     path: '/',
-    element: <HomePage />
+    element: (
+      <Suspense fallback={<Skeleton />}>
+        <HomePage />
+      </Suspense>
+    )
   },
   {
     path: '/favorites',
-    element: <FavoritesPage />
+    element: (
+      <Suspense fallback={<h2>Loading favorite...</h2>}>
+        <FavoritesPage />
+      </Suspense>
+    )
   },
 ]

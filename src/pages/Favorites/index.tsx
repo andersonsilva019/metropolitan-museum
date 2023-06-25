@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Content } from './styles'
 import { useFavorites } from "../../hooks/useFavorites";
 
-export function FavoritesPage() {
+export default function FavoritesPage() {
   const { favorites } = useFavorites()
 
   const data = favorites.map(favorite => ({

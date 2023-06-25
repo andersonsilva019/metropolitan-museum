@@ -6,7 +6,7 @@ import { SearchContext } from '../../context/Search'
 import { useGetObjectByDepartment, useGetObjects, useSearchObject } from '../../services/MuseumApiService'
 import { Content } from './styles'
 
-export function HomePage() {
+export default function HomePage() {
 
   const { departmentId } = useContext(DepartmentContext)
   const { query } = useContext(SearchContext)
