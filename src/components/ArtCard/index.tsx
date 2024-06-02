@@ -54,7 +54,7 @@ export function ArtCard({
   return (
     <>
       <Container>
-        {isPublicDomain && <Badge>Public Domain</Badge>}
+        {isPublicDomain && <Badge>Public Domain NEW</Badge>}
         <WrapperImage>
           <img src={img || defaultImage} alt={name} />
         </WrapperImage>
